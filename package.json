@@ -1,5 +1,5 @@
 {
-  "name": "conditioning",
+  "name": "goit-js-hw-11",
   "version": "1.0.0",
   "description": "",
   "source": "src/index.html",
@@ -7,11 +7,11 @@
   "scripts": {
     "dev": "parcel src/*.html",
     "start": "parcel src/*.html --open ",
-    "build": "parcel build src/*.html --public-url /conditioning/"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-11/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ITigor1985/conditioning.git"
+    "url": "git+https://github.com/ITigor1985/goit-js-hw-11"
   },
   "target": {
     "browser": {
@@ -33,7 +33,7 @@
   "author": "Tarasov IV",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ITigor1985/conditioning/issues"
+    "url": "https://github.com/ITigor1985/goit-js-hw-11/issues"
   },
-  "homepage": "https://itigor1985.github.io/conditioning"
+  "homepage": "https://itigor1985.github.io/goit-js-hw-11"
 }
