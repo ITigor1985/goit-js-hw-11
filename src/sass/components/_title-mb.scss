@@ -1,0 +1,15 @@
+.title {
+  @include font(24px, 25px);
+  font-weight: 700;
+  color: var(--text-title-color);
+}
+@media screen and(min-width: 768px) {
+  .title {
+    @include font(36px, 35px);
+  }
+}
+@media screen and(min-width: 1440px) {
+  .title {
+    @include font(48px, 55px);
+  }
+}

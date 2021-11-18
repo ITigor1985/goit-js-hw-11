@@ -1,0 +1,102 @@
+.services-and-prices img {
+  width: 100%;
+}
+.services-and-prices__title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.services-and-prices__list-item-wrapper {
+  padding-top: 7px;
+  padding-bottom: 13px;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-left: 2px solid #98ccfd;
+  border-right: 2px solid #98ccfd;
+  border-bottom: 2px solid #98ccfd;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.services-and-prices__list-item-deskription {
+  margin-bottom: 7px;
+  @include font(14px, 19px);
+}
+.services-and-prices__list-item-cost {
+  display: inline-block;
+  @include font(13px, 19px);
+  font-weight: 700;
+  padding: 5px 11px 5px 10px;
+  background-color: var(--header-text-color);
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+.services-and-prices_list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * 30px);
+  align-items: center;
+  justify-content: center;
+}
+.services-and-prices__list-item {
+  flex-basis: calc((100% - 4 * 10px) / 1);
+  margin-top: 30px;
+}
+
+@media screen and(min-width:768px) {
+  .services-and-prices__list-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    padding-bottom: 18px;
+    height: 90px;
+  }
+  .services-and-prices__title {
+    margin-bottom: 70px;
+  }
+
+  .services-and-prices__list-item-cost {
+    display: inline-block;
+    @include font(14px, 19px);
+    font-weight: 700;
+    padding: 8px 24px;
+    border-radius: 8px;
+    color: #ffffff;
+  }
+
+  .services-and-prices_list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * 56px);
+    margin-left: calc(-1 * 28px);
+    align-items: center;
+    justify-content: center;
+  }
+  .services-and-prices__list-item {
+    flex-basis: calc((100% - 4 * 28px) / 2);
+    margin-left: 28px;
+    margin-top: 56px;
+  }
+}
+@media screen and(min-width:1440px) {
+  .services-and-prices_list {
+    margin-top: calc(-1 * 60px);
+    margin-left: calc(-1 * 63px);
+  }
+  .services-and-prices__list-item {
+    flex-basis: calc((100% - 4 * 63px) / 3);
+    margin-left: 63px;
+    margin-top: 60px;
+  }
+  .services-and-prices__list-item-deskription {
+    @include font(18px, 19px);
+  }
+  .services-and-prices__list-item-wrapper {
+    padding: 20px 15px 24px;
+  }
+  .services-and-prices.section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
