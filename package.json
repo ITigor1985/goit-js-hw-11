@@ -26,9 +26,12 @@
   },
   "dependencies": {
     "@jamesives/github-pages-deploy-action": "^4.1.5",
+    "axios": "^0.24.0",
     "gh-pages": "^3.2.3",
     "normalize-scss": "^7.0.1",
-    "sass": "^1.43.4"
+    "notiflix": "^3.2.2",
+    "sass": "^1.43.4",
+    "simplelightbox": "^2.10.1"
   },
   "author": "Tarasov IV",
   "license": "ISC",
