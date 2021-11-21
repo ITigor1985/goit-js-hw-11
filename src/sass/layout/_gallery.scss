@@ -1,0 +1,17 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+.photo-card {
+  position: relative;
+}
+.info {
+  display: flex;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.info-item {
+  margin-right: 20px;
+}

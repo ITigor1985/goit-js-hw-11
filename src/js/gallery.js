@@ -4,12 +4,19 @@ const refs = {
   inpute: document.querySelector('.search-form input'),
   body: document.querySelector('body'),
   gallery: document.querySelector('.gallery'),
+  btnLoadMore: document.querySelector('.load-more')
 };
 
 const formData = {};
+let page = 1;
 
 refs.inpute.addEventListener('input', changeInput);
 refs.form.addEventListener('submit', formSubmit);
+
+refs.btnLoadMore.addEventListener('click', () => {
+  getImg(formData.searchQuery, page).then(elements => renderGaleryList(elements));
+  page++;
+})
 
 function changeInput(event) {
   formData[event.target.name] = event.target.value;
@@ -21,9 +28,12 @@ function formSubmit(event) {
   if (document.querySelector('.photo-card')) {
     refs.gallery.innerHTML = '';
   }
-  getImg(formData.searchQuery).then(elements => renderGaleryList(elements));
-  formData.searchQuery = '';
-  event.currentTarget.reset();
+  page=1;
+  getImg(formData.searchQuery, page).then(elements => renderGaleryList(elements));
+  refs.btnLoadMore.classList.remove('visually-hidden');
+  page++;
+  // formData.searchQuery = '';
+  // event.currentTarget.reset();
 }
 function renderGaleryList(...elements) {
   const markup = elements.map(element => {
@@ -32,7 +42,7 @@ function renderGaleryList(...elements) {
       refs.gallery.insertAdjacentHTML(
         'beforeend',
         `<div class="photo-card">
-            <img src="${el.webformatURL}" alt="${el.tags}" loading="lazy" />
+            <img src="${el.webformatURL}" alt="${el.tags}" loading="lazy"  />
             <div class="info">
               <p class="info-item">
                 <b>${el.likes}</b>

@@ -11,8 +11,8 @@ const BASE_URL = 'https://pixabay.com/api/?key=24398479-635f1f2d5b3b2135c0a24be0
 //   per_page: 40,
 // };
 
-export default function getImg(q) {
+export default function getImg(q, page) {
   return axios.get(
-    `${BASE_URL}&q=${q}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`,
+    `${BASE_URL}&q=${q}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${page}`,
   );
 }

@@ -1,7 +1,7 @@
 // Add imports above this line
 
 
-import { galleryItems } from './gallery-items';
+import { galleryItems } from './gallery';
 // Change code below this line
 
 console.log(galleryItems);
