@@ -1,6 +1,7 @@
 import getImg from './axiosGetImage';
 import SimpleLightbox from "simplelightbox";
 import 'simplelightbox/dist/simple-lightbox.min.css';
+
 import { Notify } from 'notiflix';
 const refs = {
   form: document.querySelector('.search-form'),
@@ -17,7 +18,15 @@ refs.inpute.addEventListener('input', changeInput);
 refs.form.addEventListener('submit', formSubmit);
 
 refs.btnLoadMore.addEventListener('click', () => {
-  getImg(formData.searchQuery, page).then(elements => renderGaleryList(elements));
+
+  getImg(formData.searchQuery, page).then(elements => {
+    
+    renderGaleryList(elements)
+    if(elements.data.totalHits <= page * 40){
+      Notify.info("We're sorry, but you've reached the end of search results.");
+      refs.btnLoadMore.classList.add("visually-hidden");
+    }
+  });
   page++;
 })
 
@@ -26,14 +35,12 @@ function changeInput(event) {
 }
 
 function formSubmit(event) {
-  event.preventDefault();
-  if(!formData.searchQuery){
-    
-  }
-  console.log(formData);
+  event.preventDefault();  
+  
   if (document.querySelector('.photo-card')) {
     refs.gallery.innerHTML = '';
   }
+
   page=1;
   getImg(formData.searchQuery, page)
   .then(elements =>{
@@ -42,11 +49,14 @@ function formSubmit(event) {
       return;
     }
     renderGaleryList(elements)
+    if(elements.data.totalHits <= page * 40){
+      Notify.info("We're sorry, but you've reached the end of search results.");
+      refs.btnLoadMore.classList.add("visually-hidden");
+      return
+    }
     refs.btnLoadMore.classList.remove('visually-hidden');
     page++;
-  }
-    
-    );  
+  });  
 }
 
 
@@ -58,8 +68,10 @@ function renderGaleryList(...elements) {
       refs.gallery.insertAdjacentHTML(
         'beforeend',
         `<div class="photo-card">
-        <a href="${el.largeImageURL}" class="gallery__link">
+            <a href="${el.largeImageURL}" class="gallery__link">
+            <div class="wrapper">
             <img src="${el.webformatURL}" alt="${el.tags}" loading="lazy"  />
+            </div>
             </a>
             <div class="info">
               <p class="info-item">
@@ -82,9 +94,7 @@ function renderGaleryList(...elements) {
   createLightBox();
 }
 
-function createLightBox() {
-  
+function createLightBox() {  
   const  lightBox = new SimpleLightbox('.gallery__link'); 
-
   lightBox.refresh();
 }
