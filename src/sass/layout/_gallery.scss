@@ -4,9 +4,10 @@
   margin: 30px;
 }
 .gallery {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 450px;
+  padding-right: 450px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: calc(-1 * 30px);
   margin-left: calc(-1 * 40px);

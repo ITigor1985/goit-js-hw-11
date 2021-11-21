@@ -42,8 +42,10 @@ function formSubmit(event) {
   }
 
   page=1;
+
   getImg(formData.searchQuery, page)
   .then(elements =>{
+    Notify.info(`Found: ${elements.data.total} images`);
     if(elements.data.totalHits === 0){
       Notify.failure("Sorry, there are no images matching your search query. Please try again.");
       return;
@@ -63,7 +65,8 @@ function formSubmit(event) {
 
 function renderGaleryList(...elements) {
   const markup = elements.map(element => {
-    console.log(element.data.hits);
+    
+    
     element.data.hits.forEach(el => {
       refs.gallery.insertAdjacentHTML(
         'beforeend',
@@ -92,6 +95,14 @@ function renderGaleryList(...elements) {
     });
   });
   createLightBox();
+  const { height: cardHeight } = document
+  .querySelector('.gallery')
+  .firstElementChild.getBoundingClientRect();
+
+window.scrollBy({
+  top: cardHeight * 2,
+  behavior: 'smooth',
+});
 }
 
 function createLightBox() {  
